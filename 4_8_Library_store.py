@@ -1,49 +1,93 @@
 class LibraryItem:
-    def __init__(self, title, author):
-        self.title = title
-        self.author = author
-        self.is_checked_out = False
+  """
+  Represents a generic library item with basic attributes and check-out/check-in functionality.
+  """
 
-    def check_out(self):
-        if self.is_checked_out:
-            print("Item is already checked out.")
-        else:
-            self.is_checked_out = True
-            print("Item checked out successfully.")
+  def __init__(self, title, author):
+    """
+    Initializes a LibraryItem object with the given title and author.
 
-    def check_in(self):
-        if not self.is_checked_out:
-            print("Item is already checked in.")
-        else:
-            self.is_checked_out = False
-            print("Item checked in successfully.")
+    Args:
+      title (str): The title of the item.
+      author (str): The author or creator of the item.
+    """
+
+    self.title = title
+    self.author = author
+    self.is_checked_out = False  # Tracks the item's check-out status
+
+  def check_out(self):
+    """
+    Checks out the item, updating its status if it's not already checked out.
+    """
+
+    if self.is_checked_out:
+      print("Item is already checked out.")
+    else:
+      self.is_checked_out = True
+      print("Item checked out successfully.")
+
+  def check_in(self):
+    """
+    Checks in the item, updating its status if it's currently checked out.
+    """
+
+    if not self.is_checked_out:
+      print("Item is already checked in.")
+    else:
+      self.is_checked_out = False
+      print("Item checked in successfully.")
 
 class Book(LibraryItem):
-    def __init__(self, title, author, isbn):
-        super().__init__(title, author)
-        self.isbn = isbn
+  """
+  Represents a book, inheriting from LibraryItem and adding an ISBN.
+  """
+
+  def __init__(self, title, author, isbn):
+    """
+    Initializes a Book object, calling the LibraryItem constructor and adding the ISBN.
+
+    Args:
+      title (str): The title of the book.
+      author (str): The author of the book.
+      isbn (str): The ISBN of the book.
+    """
+
+    super().__init__(title, author)  # Call the LibraryItem constructor
+    self.isbn = isbn
 
 class DVD(LibraryItem):
-    def __init__(self, title, director, release_year):
-        super().__init__(title, director)
-        self.release_year = release_year
+  """
+  Represents a DVD, inheriting from LibraryItem and adding a release year.
+  """
+
+  def __init__(self, title, director, release_year):
+    """
+    Initializes a DVD object, calling the LibraryItem constructor and adding the release year.
+
+    Args:
+      title (str): The title of the DVD.
+      director (str): The director of the DVD.
+      release_year (int): The release year of the DVD.
+    """
+
+    super().__init__(title, director)  # Call the LibraryItem constructor
+    self.release_year = release_year
 
 class Journal(LibraryItem):
-    def __init__(self, title, publisher, issue_number):
-        super().__init__(title, publisher)
-        self.issue_number = issue_number
+  """
+  Represents a journal, inheriting from LibraryItem and adding an issue number.
+  """
 
-# Example usage:
-book = Book("The Lord of the Rings", "J.R.R. Tolkien", "9780547928227")
-dvd = DVD("The Matrix", "The Wachowskis", 1999)
-journal = Journal("Nature", "Springer Nature", 554)
+  def __init__(self, title, publisher, issue_number):
+    """
+    Initializes a Journal object, calling the LibraryItem constructor and adding the issue number.
 
-# Check out items
-book.check_out()
-print(book.author)
-dvd.check_in() 
-print(dvd.author)
-# Check in items
-book.check_in()
-print(journal.author)
-journal.check_out()
+    Args:
+      title (str): The title of the journal.
+      publisher (str): The publisher of the journal.
+      issue_number (int): The issue number of the journal.
+    """
+
+    super().__init__(title, publisher)  # Call the LibraryItem constructor
+    self.issue_number = issue_number
